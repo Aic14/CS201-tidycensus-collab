@@ -25,4 +25,4 @@ For collaboration:
 
 Owner: Aichen Rayphand
 
-Collaborator: Name 2
+Collaborator: Shelley Palsis
