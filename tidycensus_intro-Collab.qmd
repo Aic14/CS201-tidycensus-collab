@@ -287,6 +287,26 @@ girafe(
 ### Time Series
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
+library(tidycensus)
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(purrr)
+library(viridis)
+
+years <- 2010:2022
+
+hilo_time <- map_df(years, function(y) {
+  get_acs(
+    geography = "place", 
+    variables= "B01003_001",
+    state= "HI",
+    year = y
+  ) %>%
+    filter(str_detect(NAME, "Hilo"))%>%
+    mutate(year= y)
+})
+
 ggplot(hilo_time, aes(x = year, y = estimate, color = estimate)) +
   geom_line(linewidth = 1.5) +
   geom_point(size = 3) +
@@ -301,7 +321,7 @@ ggplot(hilo_time, aes(x = year, y = estimate, color = estimate)) +
   theme(
     plot.title = element_text(face = "bold"),
     legend.position = "right"
-  )
+)
 
 ```
 
