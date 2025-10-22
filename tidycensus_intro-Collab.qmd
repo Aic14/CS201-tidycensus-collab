@@ -248,7 +248,39 @@ glimpse(hilo_only)
 ### Mapping
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
+hilo_interactive_map <- ggplot(hilo_only) +
+  geom_sf_interactive(
+    aes(
+      fill = B01003_001E,
+      tooltip = paste0(NAME, "\nPopulation: ", formatC(B01003_001E, format = "d", big.mark = ",")),
+      data_id = GEOID
+    ),
+    color = "black",
+    size = 0.3
+  ) +
+  scale_fill_viridis_c(option = "plasma", direction = -1) +
+  labs(
+    title = "Total Population — Hilo CDP, Hawaii (ACS 2022)",
+    fill = "Population"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid = element_blank(),
+    plot.title = element_text(face = "bold", hjust = 0.5)
+  )
 
+# Render interactive map
+girafe(
+  ggobj = hilo_interactive_map,
+  width_svg = 7,
+  height_svg = 5,
+  options = list(
+    opts_hover(css = "fill:#FF6600;cursor:pointer;"),
+    opts_zoom(max = 5)
+  )
+)
 
 ```
 
