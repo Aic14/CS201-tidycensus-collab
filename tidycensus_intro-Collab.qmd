@@ -287,7 +287,21 @@ girafe(
 ### Time Series
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
-
+ggplot(hilo_time, aes(x = year, y = estimate, color = estimate)) +
+  geom_line(linewidth = 1.5) +
+  geom_point(size = 3) +
+  scale_color_viridis_c(option = "plasma") +
+  labs(
+    title = "Total Population Over Time - Hilo CDP, Hawaii (ACS 2010–2022)",
+    x = "Year",
+    y = "Total Population (B01003_001)",
+    color = "Population"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    legend.position = "right"
+  )
 
 ```
 
