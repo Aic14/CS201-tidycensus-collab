@@ -363,4 +363,4 @@ ggplot(hilo_total_pop_percent_pov, aes(x = total_populationE,y = percent_poverty
 
 ### Describe what you found
 
-start describing
+In this challenge, we used the 'B01003_001' code to find the total population of people in Hilo.
