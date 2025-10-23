@@ -331,32 +331,10 @@ Exploring the relationship between (insert variable here) and (insert variable h
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
 
-hilo_total_pop_percent_pov <- get_acs(
-  geography = "place",
-  variables = c(total_population = "B01003_001",
-                percent_poverty = "DP03_0119P"),
-  state = "HI",               
-  year = 2022,
-  output = "wide",
-  geometry = TRUE             
-)
 
-hilo_only <- hilo_pop %>% filter(str_detect(NAME, "Hilo"))
-
-glimpse(hilo_only)
-
-ggplot(hilo_total_pop_percent_pov, aes(x= total_populationE, y = percent_povertyE)) +
-  geom_point() +
-  geom_smooth() + 
-  stat_cor() + 
-  theme_minimal() + 
-  labs(title = "Relationship rates between hilo's population and it poverty percentage",
-       subtitle = "2022 release",
-       x = "Hilo's total population",
-       y = "Percent of Families Living in Poverty",
-       ,
-       caption = "Shaded area represents margin of error around the estimate")
-
+  
 ```
 
 ### Describe what you found
+
+start describing
