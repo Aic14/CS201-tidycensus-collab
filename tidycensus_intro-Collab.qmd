@@ -331,7 +331,17 @@ Exploring the relationship between (insert variable here) and (insert variable h
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
 
-
+ggplot(hilo_total_pop_percent_pov, aes(x = total_populationE,y = percent_povertyE)) +
+  geom_point() +
+  geom_smooth() + 
+  stat_cor() + 
+  theme_minimal() + 
+  labs(title = "Relationship rates between hilo's population and its poverty percentage",
+       subtitle = "2022 release",
+       x = "Hio's Total Population",
+       y = "Percent of Families Living in Poverty",
+       
+       caption = "Shaded area represents margin of error around the estimate")
   
 ```
 
